@@ -115,7 +115,7 @@ if uploaded_file:
     temp_filename = "temp_image.jpg"
     cv2.imwrite(temp_filename, resized_img)
 
-    try:
+try:
     resultado = model.predict(temp_filename).json()
 
     if resultado['predictions']:
