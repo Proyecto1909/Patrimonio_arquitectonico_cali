@@ -157,7 +157,7 @@ if uploaded_file:
                     ).add_to(mapa)
 
                     st.markdown("<h5 style='text-align: center;'>Ubicación en el mapa:</h5>", unsafe_allow_html=True)
-                    st_folium(mapa, width=700)
+                    st_folium(mapa, width=600, height=400)
             else:
                 st.markdown("<p style='text-align: center; color: red;'>La clase detectada no está registrada en el diccionario.</p>", unsafe_allow_html=True)
         else:
