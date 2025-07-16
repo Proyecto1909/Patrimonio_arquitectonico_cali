@@ -124,20 +124,23 @@ if uploaded_file:
                 f"<p style='text-align: center; font-size: 28px; font-weight: bold;'>Edificio: {clase_detectada.title()}</p>",
                 unsafe_allow_html=True
             )
- # Mostrar mapa
-        if "lat" in info and "lon" in info:
-            mapa = folium.Map(location=[info["lat"], info["lon"]], zoom_start=16)
-            folium.Marker(
-                location=[info["lat"], info["lon"]],
-                popup=clase_detectada.title(),
-                tooltip="Ver ubicación"
-                ).add_to(mapa)
+                # Mostrar mapa
+                if "lat" in info and "lon" in info:
+                    mapa = folium.Map(location=[info["lat"], info["lon"]], zoom_start=16)
+                    folium.Marker(
+                        location=[info["lat"], info["lon"]],
+                        popup=clase_detectada.title(),
+                        tooltip="Ver ubicación"
+                    ).add_to(mapa)
 
-                st.markdown("<h5 style='text-align: center;'>Ubicación en el mapa:</h5>", unsafe_allow_html=True)
-                st_folium(mapa, width=600, height=400)
+                    st.markdown("<h5 style='text-align: center;'>Ubicación en el mapa:</h5>", unsafe_allow_html=True)
+                    st_folium(mapa, width=600, height=400)
             else:
                 st.markdown("<p style='text-align: center; color: red;'>La clase detectada no está registrada en el diccionario.</p>", unsafe_allow_html=True)
         else:
             st.markdown("<p style='text-align: center; font-size: 24px;'>No se detectaron objetos.</p>", unsafe_allow_html=True)
     except Exception as e:
         st.markdown(f"<p style='text-align: center; font-size: 18px; color: red;'>Error: {str(e)}</p>", unsafe_allow_html=True)
+🧠 Si quieres que ese mismo código esté enriquecido con los estilos elegantes que trabajamos juntos — como tarjetas visuales, mapa centrado y sin bordes — solo dímelo y te lo vuelvo a generar completo con todo incluido. ¿Te gustaría que lo empaquemos en un archivo para compartirlo o presentarlo? 📂🎓
+
+
