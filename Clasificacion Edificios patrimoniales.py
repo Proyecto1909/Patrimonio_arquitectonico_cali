@@ -159,12 +159,19 @@ if uploaded_file:
                     st.markdown("<h5 style='text-align: center;'>Ubicación en el mapa:</h5>", unsafe_allow_html=True)
                     st.markdown(
                         """
-                        <div style='display: flex; justify-content: center; align-items: center; width: 100%; margin: 0 auto; padding: 0;'>
+                        <style>
+                        .folium-map {
+                            margin-left: auto !important;
+                            margin-right: auto !important;
+                            display: block;
+                            background: transparent !important;
+                            box-shadow: none !important;
+                        }
+                        </style>
                         """,
                         unsafe_allow_html=True
                     )
                     st_folium(mapa, width=700, height=500)
-                    st.markdown("</div>", unsafe_allow_html=True)
             else:
                 st.markdown("<p style='text-align: center; color: red;'>La clase detectada no está registrada en el diccionario.</p>", unsafe_allow_html=True)
         else:
