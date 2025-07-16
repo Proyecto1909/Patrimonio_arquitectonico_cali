@@ -125,7 +125,7 @@ if uploaded_file:
                 unsafe_allow_html=True
             )
  # Mostrar mapa
-         if "lat" in info and "lon" in info:
+        if "lat" in info and "lon" in info:
             mapa = folium.Map(location=[info["lat"], info["lon"]], zoom_start=16)
             folium.Marker(
                 location=[info["lat"], info["lon"]],
