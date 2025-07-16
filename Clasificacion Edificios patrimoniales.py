@@ -171,7 +171,7 @@ if uploaded_file:
                         """,
                         unsafe_allow_html=True
                     )
-                    st_folium(mapa, width=700, height=500)
+                    st_folium(mapa, width=300, height=100)
             else:
                 st.markdown("<p style='text-align: center; color: red;'>La clase detectada no está registrada en el diccionario.</p>", unsafe_allow_html=True)
         else:
