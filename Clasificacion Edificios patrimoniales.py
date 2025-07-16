@@ -158,10 +158,3 @@ if uploaded_file:
             f"<p style='text-align: center; font-size: 18px; color: red;'>Error: {str(e)}</p>",
             unsafe_allow_html=True
         )
-
-
-git init
-git remote add origin https://github.com/Proyecto1909/Patrimonio_arquitectonico_cali
-git add .
-git commit -m "Primer commit"
-git push -u origin main
