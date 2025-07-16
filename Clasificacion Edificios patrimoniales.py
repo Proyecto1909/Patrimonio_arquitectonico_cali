@@ -125,39 +125,34 @@ if uploaded_file:
                 unsafe_allow_html=True
             )
 
-            if clase_detectada in clases_info:
-                info = clases_info[clase_detectada]
+                # Mostrar ubicación en el mapa
+        if "lat" in info and "lon" in info:
+        st.markdown("<h5 style='text-align: center;'>Ubicación en el mapa:</h5>", unsafe_allow_html=True)
 
-                st.markdown(
-                    f"""
-                    <div style='
-                        background-color: rgba(255,255,255,0.85);
-                        border: 2px solid #555;
-                        border-radius: 12px;
-                        padding: 20px;
-                        margin-top: 20px;
-                        width: 50%;
-                        margin-left: auto;
-                        margin-right: auto;
-                        box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
-                    '>
-                        <h4 style='text-align: center; color: #333; font-weight: bold;'>Reseña Histórica</h4>
-                        <p style='font-size: 18px; text-align: justify; color: #222;'>{info['descripcion']}</p>
-                    </div>
-                    """, unsafe_allow_html=True
-                )
+        mapa = folium.Map(location=[info["lat"], info["lon"]], zoom_start=16, control_scale=True)
 
-                # Mostrar mapa
-                if "lat" in info and "lon" in info:
-                    mapa = folium.Map(location=[info["lat"], info["lon"]], zoom_start=16)
-                    folium.Marker(
-                        location=[info["lat"], info["lon"]],
-                        popup=clase_detectada.title(),
-                        tooltip="Ver ubicación"
-                    ).add_to(mapa)
+        folium.Marker(
+            location=[info["lat"], info["lon"]],
+            popup=clase_detectada.title(),
+            tooltip="Ver ubicación"
+        ).add_to(mapa)
 
-                    st.markdown("<h5 style='text-align: center;'>Ubicación en el mapa:</h5>", unsafe_allow_html=True)
-                    st_folium(mapa, width=600, height=400)
+        st.markdown("""
+            <style>
+            .map-container iframe {
+                margin: 0 auto;
+                display: block;
+                border: none;
+                border-radius: 12px;
+                box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+            }
+            </style>
+        """, unsafe_allow_html=True)
+
+        st_folium(mapa, use_container_width=True, height=500)
+
+
+                
             else:
                 st.markdown("<p style='text-align: center; color: red;'>La clase detectada no está registrada en el diccionario.</p>", unsafe_allow_html=True)
         else:
